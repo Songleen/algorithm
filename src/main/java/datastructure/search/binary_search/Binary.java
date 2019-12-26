@@ -8,7 +8,7 @@ package datastructure.search.binary_search;
 public class Binary {
     public static void main(String[] args) {
         int[] arr = {0,1,2,3,4,5,6,7,8,9};
-        int index = binary(arr, 10, 0, arr.length - 1);
+        int index = binary(arr, 7, 0, arr.length - 1);
         System.out.println(index);
     }
 
@@ -23,8 +23,8 @@ public class Binary {
         int mid = (left + right) / 2;
         int midVal = arr[mid];
 
-        if (findVal > midVal) {       //向右递归
-            return binary(arr, findVal, mid + 1, right);    //这里mid+1和下面mid-1的不断递归，就可能会满足上面出递归的条件
+        if (findVal > midVal) {  //向右递归
+            return binary(arr, findVal, mid + 1, right); //这里mid+1和下面mid-1的不断递归，就可能会满足上面出递归的条件
         } else if (findVal < midVal) {
             return binary(arr, findVal, left, mid - 1);
         }else {

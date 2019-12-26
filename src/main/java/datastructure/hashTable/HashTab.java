@@ -5,7 +5,7 @@ package datastructure.hashTable;
  * @Author Songleen
  * @Date 2019/09/02/17:59
  * <p>
- * 创建hash表管理管理多个链表
+ * 创建hash表管理多个链表
  */
 public class HashTab {
     private EmpLinkedList[] empLinkedLists; //注意，这里是数组，不是集合
