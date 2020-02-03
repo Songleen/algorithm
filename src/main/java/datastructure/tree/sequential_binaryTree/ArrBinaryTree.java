@@ -61,6 +61,5 @@ public class ArrBinaryTree {
         if (index * 2 + 2 < arr.length) {
             infixOrder(index * 2 + 2);
         }
-
     }
 }
