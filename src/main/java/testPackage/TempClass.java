@@ -2,10 +2,7 @@ package testPackage;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiFunction;
 
 /**
@@ -83,8 +80,27 @@ public class TempClass {
         m.a += 1;
     }
 
+    @Test
+    public void testMap() {
+        int a = 10;
+        int b = 11;
+        System.out.println(a & 0);
+        System.out.println(a & 1);
+        System.out.println(a & a);
+        System.out.println(b & b);
+        System.out.println(a ^ a);
+        System.out.println(a ^ 1);
+        System.out.println(a ^ 0);
+        Map<String, Object> map = new LinkedHashMap<>();
+        Map<String, Object> map2 = new TreeMap<>();
+    }
+
+
+
+
 }
 
 class MyData {
     int a = 10;
 }
+

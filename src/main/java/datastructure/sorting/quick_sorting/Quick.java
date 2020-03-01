@@ -1,5 +1,7 @@
 package datastructure.sorting.quick_sorting;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 /**
@@ -13,9 +15,9 @@ import java.util.Arrays;
 public class Quick {
     public static void main(String[] args) {
 //        int[] arr = {2, 10, 8, 22, 34, 5, 12, 28, 21, 11};
-        int[] arr = {-9, 11, 0, 23, -567, 70,-3,0};
+        int[] arr = {-9, 11, 0, 23, -567, 70, -3, 0};
 
-        quickSort(arr, 0, arr.length - 1);
+        test01(arr, 0, arr.length - 1);
 
         System.out.println(Arrays.toString(arr));
     }
@@ -52,7 +54,7 @@ public class Quick {
                 r -= 1;
             }
 
-            //如果交换完后，发现这个arr[r] == pivot，r--，后移
+            //如果交换完后，发现这个arr[r] == pivot，l++，后移
             if (arr[r] == pivot) {
                 l += 1;
             }
@@ -72,5 +74,66 @@ public class Quick {
         if (right > l) {
             quickSort(arr, l, right);
         }
+    }
+
+    //产生一个数组
+    public static int[] productArr(int num) {
+        //先用数组存放一窜随机数
+        int[] arr = new int[num];
+        for (int i = 0; i < num; i++) {
+            int value = (int) Math.floor(Math.random() * 20);
+            arr[i] = value;
+        }
+        //foreach(arr);
+        System.out.println("排序之后……");
+        return arr;
+    }
+
+    /**
+     * 冒泡排序
+     *
+     * @Author lisonglin
+     * @Date 2020/02/29
+     * @Param []
+     **/
+    @Test
+    public static void test01(int[] arr, int left, int right) {
+        int l = left;
+        int r = right;
+        int pivot = arr[(left + right) / 2];
+        int temp = 0;
+        while (l < r) {
+            if (l >= r) {
+                break;
+            }
+            while (arr[l] < pivot) {
+                l += 1;
+            }
+            while (arr[r] > pivot) {
+                r -= 1;
+            }
+
+            temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+
+            if (arr[l] == pivot) {
+                r -= 1;
+            }
+            if (arr[r] == pivot) {
+                l += 1;
+            }
+        }
+        if (l == r) {
+            l += 1;
+            r -= 1;
+        }
+        if (left < r) {
+            test01(arr, left, r);
+        }
+        if (l < right) {
+            test01(arr, l, right);
+        }
+        // System.out.println(Arrays.toString(arr));
     }
 }

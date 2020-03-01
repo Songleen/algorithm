@@ -29,11 +29,22 @@ public class Merge {
             mergeSort(arr, left, mid, temp);
             //向右递归进行分解
             mergeSort(arr, mid + 1, right, temp);
+
             //合并
-            merge(arr, left, mid, right, temp);
+            // merge(arr, left, mid, right, temp);
         }
     }
 
+    /**
+     * @Author lisonglin
+     * @Date 2020/03/01
+     * @Param [arr, 排序的原始数组
+     * left, 左边有序序列的初始索引
+     * mid, 中间索引
+     * right, 右边索引
+     * temp,做中转的数组
+     * ]
+     **/
     //合并的方法
     public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
         int i = left;   //初始化i，左边有序序列的初始索引

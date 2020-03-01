@@ -1,5 +1,7 @@
 package datastructure.sorting.shell_sorting;
 
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -10,7 +12,7 @@ import java.util.Date;
  * @Date 2019/08/28/18:28
  * <p>
  * 希尔排序：也是一种插入排序，是简单插入排序经过改进之后的一个更高效的版本，也称为缩小增量功能
- * 注意：在用到数组的时候，指针是非常常用的东西，通过指针间接操作数组中的元素
+ * 注意：在用到数组的时候，指针是非常常用的东西，通过指针间接达到了操作数组中的元素的目的
  */
 public class DonaldShell {
     public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class DonaldShell {
 
         //排序前的时间
         String before = new SimpleDateFormat("yyyy--MM--dd HH:mm:ss").format(new Date());
-        System.out.println("排序之前时间："+before);
+        System.out.println("排序之前时间：" + before);
 
 //        shellSortChange(arr);
 //        shellSortMove(arr);
@@ -27,7 +29,7 @@ public class DonaldShell {
 
         //排序后的时间
         String after = new SimpleDateFormat("yyyy--MM--dd HH:mm:ss").format(new Date());
-        System.out.println("排序之后的时间："+after);
+        System.out.println("排序之后的时间：" + after);
 
         System.out.println("希尔排序后：" + Arrays.toString(arr));
 
@@ -52,7 +54,7 @@ public class DonaldShell {
     }
 
     //希尔排序交换法
-    public static void shellSortChange(int[] arr){
+    public static void shellSortChange(int[] arr) {
         //增量gap，逐渐缩小增量
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
 
@@ -108,7 +110,7 @@ public class DonaldShell {
 
         //第三轮将10个分为1组
         for (int i = 1; i < arr.length; i++) {
-            //遍历各组中的元素，共两组，每组5个，步长为2
+            //遍历各组中的元素，共1组，10个，步长为1
             for (int j = i - 1; j >= 0; j -= 1) {
                 if (arr[j] > arr[j + 1]) {
                     int temp = 0;
@@ -134,4 +136,30 @@ public class DonaldShell {
         return arr;
     }
 
+    /**
+     * 希尔排序交换法
+     *
+     * @Author lisonglin
+     * @Date 2020/02/29
+     * @Param []
+     **/
+    @Test
+    public void test2() {
+        int[] arr = productArr(10);
+        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < arr.length; i++) {
+                for (int j = i - gap; j >= 0; j -= gap) {
+                    if (arr[j] > arr[j + gap]) {
+                        int temp = 0;
+                        temp = arr[j];
+                        arr[j] = arr[j + gap];
+                        arr[j + gap] = temp;
+                    }
+                }
+            }
+        }
+        for (int i : arr) {
+            System.out.println(i);
+        }
+    }
 }

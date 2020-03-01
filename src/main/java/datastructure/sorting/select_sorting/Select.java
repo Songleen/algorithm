@@ -1,7 +1,8 @@
 package datastructure.sorting.select_sorting;
 
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Date;
 public class Select {
     public static void main(String[] args) {
         //获取数组
-        int[] arr = productArr(80000);
+        int[] arr = productArr(10);
 
         //排序前的时间
         String before = new SimpleDateFormat("yyyy--MM--dd HH:mm:ss").format(new Date());
@@ -60,7 +61,7 @@ public class Select {
         //先用数组存放一窜随机数
         int[] arr = new int[num];
         for (int i = 0; i < num; i++) {
-            int value = (int) Math.floor(Math.random() * 20);
+            int value = (int) Math.floor(Math.random() * 40);
             arr[i] = value;
         }
         //foreach(arr);
@@ -75,5 +76,78 @@ public class Select {
         }
     }
 
+    @Test
+    public void testForEach() {
+        int[] arr = productArr(10);
+        foreach(arr);
+        System.out.println("------------------------");
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minmum = arr[i];
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (minmum > arr[j]) {
+                    int temp = 0;
+                    temp = arr[j];
+                    arr[j] = minmum;
+                    minmum = temp;
+                }
+            }
+            arr[index] = minmum;
+        }
+        foreach(arr);
+    }
 
+
+    /**
+     * @Author lisonglin
+     * @Date 2020/02/25
+     * @Param
+     **/
+    @Test
+    public void test02() {
+        int[] arr = productArr(10);
+        int count = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minmum = arr[i];
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (minmum > arr[j]) {
+                    minmum = arr[j];
+                    index = j;
+                    count++;
+                }
+            }
+            if (index != i) {
+                arr[index] = arr[i];
+                arr[i] = minmum;
+            }
+        }
+        System.out.println(count);
+        foreach(arr);
+    }
+
+    /**
+     * @Author lisonglin
+     * @Date 2020/02/26
+     * @Param []
+     **/
+    @Test
+    public void test03() {
+        int[] arr = productArr(10);
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minmum = arr[i];
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (minmum > arr[j]) {
+                    minmum = arr[j];
+                    index = j;
+                }
+            }
+            if (index != i) {
+                arr[index] = arr[i];
+                arr[i] = minmum;
+            }
+        }
+        foreach(arr);
+    }
 }

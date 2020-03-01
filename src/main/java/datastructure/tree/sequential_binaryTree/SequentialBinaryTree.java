@@ -14,5 +14,7 @@ public class SequentialBinaryTree {
         System.out.println();
         System.out.println("中序遍历:");
         arrBinaryTree.infixOrder();
+        System.out.println("后序遍历:");
+        arrBinaryTree.afterOrder();
     }
 }

@@ -1,6 +1,6 @@
 package datastructure.sorting.bubble_sorting;
 
-import java.util.Arrays;
+import org.junit.Test;
 
 /**
  * @ClassName algorithm
@@ -17,38 +17,25 @@ public class Bubble {
 
     private static void bubbleSortTemplate() {
         double[] arr = productArray();
-
-        //然后对数组中的随机数进行冒泡排序
-        //对冒泡排序进行优化，如果一次交换都没有发生，则可以提前结束
-        boolean flag = false;
-        double temp = 0;    //临时变量，做交换时使用
-        for (int j = 0; j < arr.length - 1; j++) {
-
-            //内部循环每执行一次，则冒出一个“最大值”放在“最后”
-            for (int i = 0; i < arr.length - 1 - j; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    flag = true;
-                    temp = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = temp;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    double temp = 0;
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
-            /*if (!flag) {
-                break;
-            } else {
-                flag = false;
-            }*/
-            System.out.println("第" + (j + 1) + "趟排序后的数组：");
-            System.out.println(Arrays.toString(arr));
         }
         foreach(arr);
+
     }
 
     private static double[] productArray() {
         //先用数组存放一窜随机数
         double[] arr = new double[10];
         for (int i = 0; i < 10; i++) {
-            double value = Math.floor(Math.random() * 20);
+            double value = Math.floor(Math.random() * 80);
             arr[i] = value;
         }
         foreach(arr);
@@ -79,12 +66,64 @@ public class Bubble {
                 }
                 count++;
             }
-            if (!flag){
+            if (!flag) {
                 break;
-            }else {
+            } else {
                 flag = false;
             }
         }
-        System.out.println("总共交换了"+count+"次");
+        System.out.println("总共交换了" + count + "次");
+    }
+
+    /**
+     * @Author lisonglin
+     * @Date 2020/02/25
+     * @Param []
+     **/
+    @Test
+    public void test01() {
+        double[] arr = productArray();
+        double temp = 0;
+        int count = 0;
+        boolean flag = false;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    flag = true;
+                    count++;
+                }
+            }
+            if (flag) {
+                flag = false;
+            } else {
+                break;
+            }
+        }
+        System.out.println(count);
+        foreach(arr);
+    }
+
+    /**
+     * @Author lisonglin
+     * @Date 2020/02/26
+     * @Param []
+     **/
+    @Test
+    public void test02() {
+        double[] arr = productArray();
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    double temp = 0;
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        foreach(arr);
     }
 }

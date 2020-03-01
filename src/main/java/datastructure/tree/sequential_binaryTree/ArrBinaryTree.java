@@ -39,12 +39,16 @@ public class ArrBinaryTree {
         this.preOrder(0);
     }
 
-    public void infixOrder(){
+    public void infixOrder() {
         this.infixOrder(0);
     }
 
+    public void afterOrder() {
+        this.afterOrder(0);
+    }
+
     //顺序存储二叉树的中序遍历
-    public void infixOrder(int index){
+    public void infixOrder(int index) {
         if (arr == null || arr.length == 0) {
             System.out.println("数组为空");
             return;
@@ -62,4 +66,21 @@ public class ArrBinaryTree {
             infixOrder(index * 2 + 2);
         }
     }
+
+    //顺序存储二叉树后序遍历
+    public void afterOrder(int index) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("数组为空");
+            return;
+        }
+
+        if (2 * index + 1 < arr.length) {
+            afterOrder(2 * index + 1);
+        }
+        if (2 * index + 2 < arr.length) {
+            afterOrder(2 * index + 2);
+        }
+        System.out.print(arr[index] + " ");
+    }
+
 }
