@@ -11,7 +11,7 @@ public class DivideAndConquer {
 
     @Test
     public void test1() {
-        int num = 6;
+        int num = 64;
         hanoiTower(num, 'A', 'B', 'C');
     }
 

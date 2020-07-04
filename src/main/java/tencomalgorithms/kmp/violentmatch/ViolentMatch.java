@@ -11,7 +11,7 @@ public class ViolentMatch {
 
     @Test
     public void test1() {
-        String source = "adkfjaiejflefjakwnv";
+        String source = "ajakfjaiejflefjakwnv";
         String target = "jak";
         int i = violentMatchString(source, target);
         System.out.println(i);
