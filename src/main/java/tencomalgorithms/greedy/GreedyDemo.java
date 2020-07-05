@@ -12,10 +12,10 @@ public class GreedyDemo {
 
         Map<String, HashSet<String>> broadcast = new HashMap<>();
         broadcast.put("k1", new HashSet<>(Arrays.asList("北京", "上海", "天津")));
-        broadcast.put("k4", new HashSet<>(Arrays.asList("上海", "天津")));
-        broadcast.put("k3", new HashSet<>(Arrays.asList("成都", "上海", "杭州")));
         broadcast.put("k2", new HashSet<>(Arrays.asList("广州", "北京", "深圳")));
-        broadcast.put("k5", new HashSet<>(Arrays.asList("杭州", "大连")));
+        broadcast.put("k3", new HashSet<>(Arrays.asList("上海", "杭州")));
+        broadcast.put("k4", new HashSet<>(Arrays.asList("上海", "天津")));
+        broadcast.put("k5", new HashSet<>(Arrays.asList("杭州", "大连", "成都")));
 
         List<String> allArea = new ArrayList<>();
         allArea.add("北京");
