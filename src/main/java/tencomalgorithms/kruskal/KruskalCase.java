@@ -118,17 +118,6 @@ class Graph {
         }
     }
 
-    // 获取顶点的值
-    private char getPosition(int num) {
-        for (int i = 0; i < vertexes.length; i++) {
-            if (num == i) {
-                return vertexes[i];
-            }
-        }
-        return '1';
-    }
-
-
     // 获取图中的边
     public EData[] getEdges() {
         int index = 0;
