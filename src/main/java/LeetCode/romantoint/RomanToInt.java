@@ -18,13 +18,12 @@ public class RomanToInt {
     }
 }
 
-/**
- * 前数小于后数就减，大于后数就加
+/** 
  *
- * @Author lisonglin
- * @Date 2020/02/23
- * @Param
- **/
+ * @Author 李松林
+ * @Date 2020-09-21 11:57:04
+ * @Description
+*/
 class Solution {
     public int romanToInt(String s) {
         int sum = 0;
