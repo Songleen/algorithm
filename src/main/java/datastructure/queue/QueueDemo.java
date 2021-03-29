@@ -63,8 +63,8 @@ class ArraysQueue {
     public ArraysQueue(int arrMaxSize) {
         maxSize = arrMaxSize;
         arr = new int[maxSize];
-        front = -1; //指向队列头部，分析出front是指向队列头的前一个位置
-        rear = -1;  //指向队列尾部，指向队列尾部的数据
+        front = -1; //指向队列头部，分析出front是指向队列头的前一个位置，作为数组下标使用
+        rear = -1;  //指向队列尾部，指向队列尾部的数据，作为数组下标使用
     }
     //判断队列是否已满
     public boolean isFull() {
@@ -80,6 +80,7 @@ class ArraysQueue {
             System.out.println("队列已满，不能添加新的数据");
             return;
         }
+        // 添加进来的数据永远在后面，这样方便取值。如果添加进来的值一直放前面，应该会方便存值
         rear++;
         arr[rear] = n;
     }
