@@ -1,5 +1,7 @@
 package datastructure.array;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @ClassName algorithm
  * @Author Songleen
@@ -7,11 +9,9 @@ package datastructure.array;
  */
 public class ArrayDemo {
     public static void main(String[] args) {
-        int[] arr1 = new int[3];
-        System.out.println(arr1.length);
-        int[] arr2 = {1, 2, 3, 4, 5};
-        System.out.println(arr2.length);
-        int[] arr3 = new int[]{1, 2, 3, 4, 5, 6};
-        System.out.println(arr3.length);
+        ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>(10);
+        map.put(1 + "", 1);
+        map.put("1", 2);
+        Object o = map.get("1");
     }
 }
