@@ -66,14 +66,17 @@ class ArraysQueue {
         front = -1; //指向队列头部，分析出front是指向队列头的前一个位置，作为数组下标使用
         rear = -1;  //指向队列尾部，指向队列尾部的数据，作为数组下标使用
     }
+
     //判断队列是否已满
     public boolean isFull() {
         return rear == maxSize - 1;
     }
+
     //判断队列是否为空
     public boolean isEmpty() {
         return rear == front;
     }
+
     //添加数据到队列
     public void addQueue(int n) {
         if (isFull()) {

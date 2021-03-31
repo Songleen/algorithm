@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class RingQueue {
     public static void main(String[] args) {
-        //创建一个环形队列，居然有队列！！！
-        CircularQueue queue = new CircularQueue(4); //这里实际大小是3，因为保留了一个位置，目的为了代码更容易阅读；
+        //这里实际大小是3，因为保留了一个位置，目的为了代码更容易阅读，实现起来也更方便；
+        CircularQueue queue = new CircularQueue(4);
         char key = ' ';
         Scanner s = new Scanner(System.in);
         boolean loop = true;
@@ -68,10 +68,11 @@ class CircularQueue {
 
     //判断队列是否已满
     public boolean isFull() {
-        return (rear + 1) % maxSize == front;   //如果队列头有值被取出，则没有满
+        //如果队列头有值被取出，则没有满
+        return (rear + 1) % maxSize == front;
     }
 
-    //判断队列是否为空
+    //判断队列是否为空，依然是两个指针相等时表示队列为空
     public boolean isEmpty() {
         return rear == front;
     }
