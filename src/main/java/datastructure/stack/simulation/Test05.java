@@ -1,5 +1,7 @@
 package datastructure.stack.simulation;
 
+import org.junit.Test;
+
 /**
  * @ClassName algorithm
  * @Author Songleen
@@ -14,5 +16,12 @@ public class Test05 {
         stack.push(4);
         stack.push(5);
         stack.showStack();
+    }
+
+    @Test
+    public void test01() {
+        int a = 10;
+        char b = 'a';
+        System.out.println(a + b);
     }
 }

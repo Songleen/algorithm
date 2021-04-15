@@ -68,6 +68,23 @@ public class DoubleLinkedList {
         }
     }
 
+    //获取链表的有效元素个数
+    public static int getLength(HeroNode2 node) {
+        if (node == null) {
+            throw new RuntimeException("链表为空链表");
+        }
+        int count = 0;
+        while (true) {
+            if (node.getNext() != null) {
+                count++;
+            } else {
+                break;
+            }
+            node = node.getNext();
+        }
+        return count;
+    }
+
     //从双向链表中删除一个节点
     public void delete(int no) {
         if (head.getNext() == null) {
@@ -81,6 +98,7 @@ public class DoubleLinkedList {
                 System.out.println("没有对应编号的节点");
                 return;
             }
+            // 要删除的不是尾部节点
             if (temp.getNo() == no && temp.getNext() != null) {
                 HeroNode2 preNode = temp.getPre();  //上一个节点
                 HeroNode2 nextNode = temp.getNext();   //下一个节点
@@ -88,25 +106,13 @@ public class DoubleLinkedList {
                 nextNode.setPre(preNode);
                 break;
             }
+            // 要删除的是尾部节点
+            if (temp.getNo() == no && temp.getNext() == null) {
+                HeroNode2 pre = temp.getPre();
+                pre.setNext(null);
+            }
             temp = temp.getNext();
         }
-    }
-
-    //获取链表的有效元素个数
-    public static int getLength(HeroNode2 node){
-        if (node == null){
-            throw new RuntimeException("链表为空链表");
-        }
-        int count = 0;
-        while (true){
-            if (node.getNext()!= null){
-                count++;
-            }else {
-                break;
-            }
-            node = node.getNext();
-        }
-        return count;
     }
 
 }

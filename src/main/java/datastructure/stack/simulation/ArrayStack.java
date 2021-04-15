@@ -60,7 +60,8 @@ public class ArrayStack {
         } else if (oper == '(' || oper == ')') {
             return 2;
         } else {
-            return -1;  //假定当前表达式只有+，-，*，/
+            //假定当前表达式只有+，-，*，/
+            return -1;
         }
     }
 

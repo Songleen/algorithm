@@ -35,7 +35,9 @@ public class LinkedStack {
 
         while (cur != null){
             //下面几步的步骤不可更改
-            next = cur.getNext();   //将cur往后推
+            //将cur往后推
+            next = cur.getNext();
+            // 这里相当于截断了cur之后的
             cur.setNext(reserveHead.getNext());
             reserveHead.setNext(cur);
             cur = next;

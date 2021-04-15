@@ -1,6 +1,8 @@
 package datastructure.josephu;
 
 import datastructure.josephu.singlyCirLinkList.SCLinkList;
+import datastructure.josephu.singlyCirLinkList.SClinkList2;
+import org.junit.Test;
 
 /**
  * @ClassName algorithm
@@ -13,6 +15,14 @@ public class Test03 {
         scLinkList.add(5);
         scLinkList.showPerson();
         System.out.println("小孩出圈顺序=========");
-        scLinkList.solve(1, 2, 10);
+        scLinkList.solve(2, 2, 10);
+    }
+
+    @Test
+    public void test01() {
+        SClinkList2 cir = new SClinkList2();
+        cir.add(1000);
+        System.out.println("==========================");
+        cir.palyGame(1, 3);
     }
 }
