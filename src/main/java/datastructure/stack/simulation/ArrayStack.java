@@ -102,7 +102,7 @@ public class ArrayStack {
         while (top != -1) {
             int value = stack[top];
             top--;
-            System.out.println(value);
+            System.out.print(value + "\t");
         }
     }
 }

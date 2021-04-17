@@ -20,8 +20,7 @@ public class Test05 {
 
     @Test
     public void test01() {
-        int a = 10;
-        char b = 'a';
-        System.out.println(a + b);
+        String item = "123.234";
+        System.out.println("\\\\");
     }
 }

@@ -10,10 +10,24 @@ import java.util.Stack;
  * @Date 2019/08/26/9:05
  * <p>
  * 中缀表达式转后缀表达式
+ *
+ * 1、准备一个数操作栈s1和符号操作栈s2
+ * 2、从左到右遍历表达式
+ *  2.1、遇到数字，直接压入数栈
+ *  2.2、遇到符号
+ *      2.2.1、如果是“（”,则直接压入符号栈
+ *      2.2.2、如果是“）”，则依次弹出符号栈，压入数栈，直到遇到“（”，弹出，并舍弃这对括号
+ *      2.2.3、其它符号
+ *          2.2.3.1、如果符号栈为空，则直接压入符号栈
+ *          2.2.3.2、否则，比较符号栈栈顶的符号和当前符号的优先级，如果当前的更高，直接压入符号栈
+ *          2.2.3.2、若当前符号的优先级低于等于符号栈栈顶的优先级，则将符号栈顶的运算符弹出并压入到数栈中。再进行2.2.3的步骤。
  */
 public class InterfixToSuffix {
     public static void main(String[] args) {
-        String interfix2 = "1+((23+3)*4)-5";
+        String interfix2 = "1+ (\n\t(\f\r2.3+3)*4)-5";
+
+        // 去除所有的无用字符
+        interfix2 = interfix2.replaceAll("\\s", "");
 
         List<String> ls = toInfixExpressionList(interfix2);
         System.out.println("中缀表达式对应的List:" + ls);
@@ -24,7 +38,8 @@ public class InterfixToSuffix {
     }
 
     //返回运算符的优先级
-    public static int priority(String item) {  //这里要使用static修饰，才能在上面的main方法中调用
+    //这里要使用static修饰，才能在上面的main方法中调用
+    public static int priority(String item) {
         char oper = item.charAt(0);
         if (oper == '+' || oper == '-') {
             return 1;
@@ -47,7 +62,7 @@ public class InterfixToSuffix {
         return list;
     }
 
-    //将中缀表达式转成对应的List s="1+((2+3)*4)-5,一下这种方式的通用性更好
+    //将中缀表达式转成对应的List， s="1+((2+3)*4)-5,以下这种方式的通用性更好
     public static List<String> toInfixExpressionList(String s) {
         List<String> ls = new ArrayList<>();
         int i = 0;
@@ -63,7 +78,7 @@ public class InterfixToSuffix {
                 //如果是一个数，需要考虑多位数
             } else {
                 str = "";     //现将str置成""，'0'[48]>'9'[57]
-                while (i < s.length() && ((c = s.charAt(i)) >= 48 && (c = s.charAt(i)) <= 57)) {  //拼接考虑用while循环
+                while (i < s.length() && ((c = s.charAt(i)) >= 48 && (c = s.charAt(i)) <= 57 || (c = s.charAt(i)) == 46)) {  //拼接考虑用while循环
                     str += c; //拼接
                     i++;
                 }
@@ -87,16 +102,17 @@ public class InterfixToSuffix {
         //定义两个栈,运算符栈s1和中间结果栈s2
         // 因为s2这个栈,在整个转换过程中，没有pop操作，而且后面还需要逆序输出，比较麻烦，所以这里直接使用List<String> s2;
         Stack<String> s1 = new Stack<>();
+        // s2是数栈
         List<String> s2 = new ArrayList<>();
 
         for (String item : ls) {
             //如果是一个数，加入s2
-            if (item.matches("\\d+")) {
+            if (item.matches("([0-9]+\\.[0-9]+)|[0-9]+")) {
                 s2.add(item);
             } else if (item.equals("(")) {
                 s1.push(item);
             } else if (item.equals(")")) {
-                while (s1.size()!= 0 && !s1.peek().equals("(")) {
+                while (s1.size() != 0 && !s1.peek().equals("(")) {
                     s2.add(s1.pop());
                 }
                 s1.pop();   //将（ 弹栈，消除小括号

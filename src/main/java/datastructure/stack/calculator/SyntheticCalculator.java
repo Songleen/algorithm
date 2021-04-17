@@ -11,7 +11,7 @@ import datastructure.stack.simulation.ArrayStack;
  */
 public class SyntheticCalculator {
     public static void main(String[] args) {
-        String expression = "7*100-6+8/4";
+        String expression = "2*(10-6)+8/4";
 
         //创建两个栈
         ArrayStack numStack = new ArrayStack(10);
@@ -36,7 +36,8 @@ public class SyntheticCalculator {
                 if (operStack.isEmpty()) {
                     operStack.push(ch);
                 } else {
-                    // 1.2、如果符号栈不为空，如果栈中优先级高，则先进行运算
+                    // 1.2、如果符号栈不为空，判断和栈中的运算符的优先级，
+                    // 如果栈中优先级高，则先用栈中运算符进行运算
                     int num = operStack.priority(ch);
                     int peekNum = operStack.priority(operStack.peek());
                     // 如果后一个运算符优先级低于前一个，则将前一个的进行计算再放到栈中
@@ -62,7 +63,7 @@ public class SyntheticCalculator {
                 if (index == expression.length()-1){
                     numStack.push(Integer.parseInt(keepNum));
                 }else {
-                    //往后看一位，不是Index++
+                    //往后看一位，不是Index++。往后看一位是考虑多位数
                     if (operStack.isOper(expression.substring(index+1, index+2).charAt(0))){
                         //如果后一位是运算符，就将当前数字入栈
                         numStack.push(Integer.parseInt(keepNum));
