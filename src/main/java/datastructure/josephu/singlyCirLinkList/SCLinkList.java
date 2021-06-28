@@ -14,7 +14,7 @@ public class SCLinkList {
     //创建第一个first节点，没有编号
     private Person first = null;
 
-    //向链表中添加节点
+    //向链表中添加节点,nums为添加节点的数量
     public void add(int nums) {
 
         Person curPerson = null;  //辅助指针，帮助构建环形链表
@@ -25,15 +25,15 @@ public class SCLinkList {
         }
 
         for (int i = 1; i <= nums; i++) {
-            Person person = new Person(i, "小朋友" + i);
+            Person newPerson = new Person(i, "小朋友" + i);
             if (i == 1) {
-                first = person;
+                first = newPerson;
                 first.setNext(first);   //构成环
                 curPerson = first;
             } else {
-                curPerson.setNext(person);
-                person.setNext(first);
-                curPerson = person; //保证curPerson一直指向刚新建的，环一直存在
+                curPerson.setNext(newPerson);
+                newPerson.setNext(first); // 新添加的节点的下一个始终应该指向头节点
+                curPerson = newPerson; //保证curPerson一直指向刚新建的，环一直存在
             }
         }
     }
@@ -65,20 +65,18 @@ public class SCLinkList {
 
         add(nums);  //向链表中添加节点
 
-        // 创建一个辅助指针,让它一直跟在first后面，这样当first要被删除时，直接通过辅助指针来设置
+        // 创建一个辅助指针,让它一直跟在first后面，
         // 因为是单向链表，所以移除节点的时候需要用到辅助指针
-        //当下面这个while循环结束之后，helper就跑到链表的最后，也就是first后面了
+        // 当下面这个while循环结束之后，helper就跑到链表的最后，也就是first后面了
         Person helper = first;
         while (true) {
-            //已到末尾
-            if (helper.getNext() == first) {
+            if (helper.getNext() == first) {    //已到末尾
                 break;
             }
             helper = helper.getNext();
         }
 
-        //小孩报数前，先让first和helper移动k-1次，因为自己要数一下，
-        //也就是要找到开始的位置
+        //小孩报数前，先让first和helper移动k-1次，因为自己要数一下
         for (int i = 0; i < startNo - 1; i++) {
             first = first.getNext();
             helper = helper.getNext();
@@ -87,8 +85,7 @@ public class SCLinkList {
         //当小孩开始报数时，让first和hepler同时移动countNum-1次(因为自己要数一下),
         // 这里是一个循环，直到圈中只有一个节点
         while (true) {
-            //说明圈中只有一个节点
-            if (helper == first) {
+            if (helper == first) {   //说明圈中只有一个节点
                 break;
             }
             for (int j = 0; j < countNum - 1; j++) {
@@ -98,8 +95,6 @@ public class SCLinkList {
             //这是first指向的节点，就是要出圈的节点
             System.out.printf("小孩%d出圈\n", first.getNo());
             first = first.getNext();
-
-            // 这是删除节点的代码
             helper.setNext(first);
         }
         System.out.printf("最后留在圈中的小孩编号%d", first.getNo());

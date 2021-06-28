@@ -2,6 +2,8 @@ package datastructure.array;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+
 /**
  * @ClassName algorithm
  * @Author Songleen
@@ -136,4 +138,7 @@ public class SparseArray {
             System.out.println();
         }
     }
+
+    // 将普通二维数组转化为稀疏数组
+
 }

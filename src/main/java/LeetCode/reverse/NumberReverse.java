@@ -9,7 +9,7 @@ package LeetCode.reverse;
 public class NumberReverse {
     public static void main(String[] args) {
         Solution s = new Solution();
-        int reverse = s.reverse2(-2147483647);
+        int reverse = s.reverse(2147483647);
         System.out.println(reverse);
         System.out.println();
     }

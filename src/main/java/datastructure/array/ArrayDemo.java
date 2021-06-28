@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ArrayDemo {
     public static void main(String[] args) {
-        ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>(10);
+        ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<String, Object>(10);
         map.put(1 + "", 1);
         map.put("1", 2);
         Object o = map.get("1");
